@@ -10,9 +10,9 @@ Hosted by Masaryk University. Course page: <https://summeratmasaryk.cz/aienhance
 
 | Week | Dates (Mon–Fri) | Theme | Live sessions (Europe/Prague) |
 |------|-----------------|-------|--------------------------------|
-| 1 | **25 May – 29 May 2026** | [What an LLM actually is](weeks/week1.md) | **Mon 25.5 · 09:00–10:00** kick-off · **Fri 29.5 · 12:00–12:30** Q&A |
-| 2 | **1 Jun – 5 Jun 2026** | [Agentic IDEs on bioinformatics tasks](weeks/week2.md) | **Fri 5.6 · 12:00–12:30** Q&A |
-| 3 | **8 Jun – 12 Jun 2026** | [Bio foundation models as tools](weeks/week3.md) | **Fri 12.6 · 12:00–12:30** Q&A |
+| 1 | **25 May – 29 May 2026** | [What an LLM actually is](weeks/week1.md) | **Mon 25.5 · 09:00–10:00** kick-off<br>**Tue 26.5 · 11:00–14:00** Domain Expertise: The Internal Validator of AI Quality<br>**Fri 29.5 · 12:00–12:30** Q&A |
+| 2 | **1 Jun – 5 Jun 2026** | [Agentic IDEs on bioinformatics tasks](weeks/week2.md) | **Tue 2.6 · 11:00–14:00** Feature Engineering: Translating Scientific Intuition into Numbers<br>**Fri 5.6 · 12:00–12:30** Q&A |
+| 3 | **8 Jun – 12 Jun 2026** | [Bio foundation models as tools](weeks/week3.md) | **Tue 9.6 · 11:00–14:00** Interpretability: Translating AI Outputs Back into Human Knowledge<br>**Fri 12.6 · 12:00–12:30** Q&A |
 | 4 | **15 Jun – 19 Jun 2026** | [How agents talk to the world: tools, commands, MCP](weeks/week4.md) | **Fri 19.6 · 12:00–12:30** Q&A |
 | In person | **22 Jun – 26 Jun 2026** | Build week, Brno (Czechia) | Full days, on site |
 
