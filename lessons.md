@@ -76,26 +76,21 @@ Add an entry whenever an LLM or agent catches you off guard. Include enough deta
 
 ## Paper (What claim would I most want to verify on my own data?)
 
-- The claim I’d most like to test against my own data is whether, even today with the latest LLM models, the algorithm developed by the paper’s authors is truly  
-  necessary, or whether, by using models like Gemini 3.1 and similar one, it can be removed, potentially leading to improved overall performance
+- The claim I’d most like to test against my own data is whether, even today with the latest LLM models, the algorithm developed by the paper’s authors is truly necessary, or whether, by using models like Gemini 3.1 and similar one, it can be removed, potentially leading to improved overall performance
 
 
 ## Reflection Exercise (Pick three things you've seen LLMs do badly (or three things you'd want them to do for you). For each, explain — using the mental model from the videos and lecture — why that task is hard or easy for an LLM, and what kind of domain check would be needed before trusting the result.)
 
-- One early example where I saw that the LLM doesn't work well is when you feed it complex mathematical calculations. Once, I asked it to perform several complex 
-  matrix calculations in a row, telling it to give me the result quickly. It gave me the wrong answer. Even when I pointed out the error, it would quickly redo the calculation and keep getting it wrong. This happens because, by forcing it to be fast, the model uses few tokens and doesn’t have the space for step-by-step processing. The check that experts must always perform is to never trust the LLM as a mathematical calculator, but to force it to write the programming script and then execute it independently.
+- One early example where I saw that the LLM doesn't work well is when you feed it complex mathematical calculations. Once, I asked it to perform several complex matrix calculations in a row, telling it to give me the result quickly. It gave me the wrong answer. Even when I pointed out the error, it would quickly redo the calculation and keep getting it wrong. This happens because, by forcing it to be fast, the model uses few tokens and doesn’t have the space for step-by-step processing. The check that experts must always perform is to never trust the LLM as a mathematical calculator, but to force it to write the programming script and then execute it independently.
 
-- A second example involves summaries. I asked it to provide a technical summary of a well-known article, instructing it not to omit important details, but without 
-  pasting the text into the prompt. It wrote a fluent summary but completely made up the results and metrics. This happens because the LLM relies on its compressed memory, so it remembers the general gist of the paper but loses the exact details, ending up hallucinating to fill in the gaps. Expert control involves never relying on its memory. You must always provide the text in the prompt, so that it has the data available and doesn’t have to invent anything.
+- A second example involves summaries. I asked it to provide a technical summary of a well-known article, instructing it not to omit important details, but without pasting the text into the prompt. It wrote a fluent summary but completely made up the results and metrics. This happens because the LLM relies on its compressed memory, so it remembers the general gist of the paper but loses the exact details, ending up hallucinating to fill in the gaps. Expert control involves never relying on its memory. You must always provide the text in the prompt, so that it has the data available and doesn’t have to invent anything.
 
-- The third example occurred when I needed to validate a model trained on time-series data. I asked it which method it recommended, and it immediately suggested the
-  classic K-fold cross-validation. The problem is that K-Fold performs a random split, so if I had followed his advice, I would have used future data to predict past data. This happens because the LLM returns a standard approach, ignoring what is physically feasible. Domain expertise must therefore always verify what the LLM returns and provide as many details as possible in the prompt to the LLM.
+- The third example occurred when I needed to validate a model trained on time-series data. I asked it which method it recommended, and it immediately suggested the classic K-fold cross-validation. The problem is that K-Fold performs a random split, so if I had followed his advice, I would have used future data to predict past data. This happens because the LLM returns a standard approach, ignoring what is physically feasible. Domain expertise must therefore always verify what the LLM returns and provide as many details as possible in the prompt to the LLM.
 
 
 ## What is one example from my own domain where expertise is needed to instruct an LLM, design a model, or validate an AI-generated result?
 
-- In my field of study, I have often had an LLM generate the code needed to perform ablation studies. In most cases, the code produced was correct and functional, 
-  but the LLM did not take into account fundamental methodological aspects such as the reproducibility of the experiments. For example, without setting a fixed seed, the results obtained may simply depend on a different initialization of the weights. A non-expert user might therefore accept such results without questioning them and attribute an improvement in performance to the introduced change, when in reality it might be due solely to chance.
+- In my field of study, I have often had an LLM generate the code needed to perform ablation studies. In most cases, the code produced was correct and functional, but the LLM did not take into account fundamental methodological aspects such as the reproducibility of the experiments. For example, without setting a fixed seed, the results obtained may simply depend on a different initialization of the weights. A non-expert user might therefore accept such results without questioning them and attribute an improvement in performance to the introduced change, when in reality it might be due solely to chance.
 
 
 #### Surprises
