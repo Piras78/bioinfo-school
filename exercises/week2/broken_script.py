@@ -9,32 +9,32 @@ from pathlib import Path
 
 
 def read_fasta(path):
+    content = Path(path).read_text()
     records = {}
-    current_name = None
-    current_seq = []
-
-    for line in Path(path).read_text().splitlines():
-        line = line.strip()
-        if line.startswith(">"):
-            if current_name:
-                records[current_name] = "".join(current_seq)
-            current_name = line[1:]
-            current_seq = []
-        else:
-            current_seq.append(line)
-
+    
+    for entry in content.split(">")[1:]:
+        lines = entry.splitlines()
+        if lines:
+            name = lines[0].strip()
+            sequence = "".join(line.strip() for line in lines[1:])
+            records[name] = sequence
+            
     return records
 
 
 def gc_percent(sequence):
+    if not sequence:
+        return 0.0
+    sequence = sequence.upper()
     gc = sequence.count("G") + sequence.count("C")
     return gc / len(sequence)
 
 
 def main():
-    records = read_fasta("example.fa")
+    fasta_path = Path(__file__).parent / "example.fa"
+    records = read_fasta(fasta_path)
 
-    for name, sequence in records:
+    for name, sequence in records.items():
         print(name, len(sequence), gc_percent(sequence))
 
 
