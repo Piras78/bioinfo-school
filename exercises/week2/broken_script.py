@@ -23,11 +23,8 @@ def read_fasta(path):
 
 
 def gc_percent(sequence):
-    if not sequence:
-        return 0.0
-    sequence = sequence.upper()
-    gc = sequence.count("G") + sequence.count("C")
-    return gc / len(sequence)
+    seq = sequence.upper()
+    return (seq.count("G") + seq.count("C")) / len(seq) if seq else 0.0
 
 
 def main():
