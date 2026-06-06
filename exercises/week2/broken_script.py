@@ -29,10 +29,8 @@ def gc_percent(sequence):
 
 def main():
     fasta_path = Path(__file__).parent / "example.fa"
-    records = read_fasta(fasta_path)
-
-    for name, sequence in records.items():
-        print(name, len(sequence), gc_percent(sequence))
+    for name, sequence in read_fasta(fasta_path).items():
+        print(f"{name} {len(sequence)} {gc_percent(sequence)}")
 
 
 if __name__ == "__main__":
