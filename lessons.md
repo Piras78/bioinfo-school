@@ -103,9 +103,25 @@ Add an entry whenever an LLM or agent catches you off guard. Include enough deta
 
 <!-- ReAct / Karpathy Software 3.0 notes; trap-exercise discussion questions -->
 
+**1. What other "looks right but isn't" failures might hide in agent-generated bioinformatics code? (Strand handling, GRCh37/38 confusion, BED vs GFF, 0-based vs 1-based VCF positions, samtools mpileup off-by-one, BAM flag bitfield misreads, phred encoding…)**
+While doing some research, I discovered that there are other mistakes the agent can make without causing the program to crash. For example, it might forget to perform reverse-complementation when the sequence is on the negative strand. Another common issue is confusion between genome versions (such as using GRCh37 coordinates on GRCh38) or mixing formats that start counting from 0 (like BED) with those that start from 1 (like GFF or VCF).
+
+**2. For your own subfield, what are three biological invariants you could routinely use to validate agent output?**
+In my field, the three biological rules (biological invariants) I would use to validate the agent’s results are:
+- **Coding Sequences (CDS)**: The length of the CDS must be a multiple of 3, begin with a start codon (usually ATG), and end with a stop codon (TAA, TAG, TGA).
+- **Variant Calling (VCF)**: The reference allele (REF) reported for a variant must exactly match the nucleotide present in the reference genome (FASTA file) at those specific coordinates.
+- **Splicing (Transcription)**: The exon-intron boundaries of eukaryotic transcripts must contain the canonical splicing dinucleotides (GT at the donor site at the start of the intron and AG at the acceptor site at the end).
+
+**3. If you had ten thousand CDS features and couldn't eyeball them all, how would you scale this validation?**
+To manage large-scale validation, I would automate the process by integrating programmatic checks directly into the pipeline. I would write a validation script that performs assertions (`assert` statements in Python) on the records. If even a single element violates the defined biological invariants, the program raises an exception (`AssertionError`) or writes the anomaly to a log file. This allows silent errors to be automatically caught before proceeding to the next stages of analysis.
+
 #### Surprises
 
 <!-- Trap exercise, mini-project, agent moments — be specific -->
+
+> **2026/06/06 · Antigravity (Gemini 3.5 Flash) ** — Asked: *"Write a Python script that reads genome.fa and annotations.gff3, extracts the nucleotide sequence of each CDS, translates it to protein using the standard genetic code, and prints gene_name<TAB>nt_sequence<TAB>protein_sequence for each CDS. Use Biopython if you want."* **Answered**: Surprisingly, the agent did not fall into the expected trap. It automatically recognized that GFF3 is 1-based inclusive and Python slicing is 0-based exclusive, adjusting the math without me telling it. The generated proteins correctly started with 'M', ended with a stop codon ('*'), and the nucleotide lengths were divisible by 3.
+
+> **2026/06/07 · Antigravity (Gemini 3.5 Flash) ** — Asked: *"Build a reproducible pipeline for PCA analysis on gene expression data, ensuring that it passes biological verification tests for replicate clustering."* **Answered**: Surprisingly, the agent successfully completed the entire project on its third attempt with very little manual intervention. I had to step in during the second attempt because the agent forgot to set up a virtual environment and install the required dependencies (which it had listed in `requirements.txt`). Additionally, in the third attempt, the agent corrected its own simulated dataset (`expression_matrix.csv`) because the replicates had too much random noise to pass the biological invariant check. It successfully solved this by reducing the replicate variance and adjusting the assertion threshold to make the verification test pass.
 
 ### Week 3
 
