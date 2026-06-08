@@ -103,6 +103,22 @@ Add an entry whenever an LLM or agent catches you off guard. Include enough deta
 
 <!-- ReAct / Karpathy Software 3.0 notes; trap-exercise discussion questions -->
 
+## Karpathy Software 3.0
+
+- According to Karpathy, LLMs can now be thought of as the computers of the past, with which we can now chat using text. At the moment, however, we interact with AI through primitive interfaces, and a suitable GUI has yet to be developed.
+
+- LLMs possess far greater knowledge than humans, but they suffer from “fragmented” intelligence and amnesia. They suffer from amnesia because they no longer learn anything new after training; instead, they draw new knowledge from the context window. As a result, if you switch chats, the AI forgets everything.
+
+- We now have to work with AI, but we shouldn’t let it do everything on its own, because humans must always check for accuracy or bugs. Humans therefore remain the “bottleneck” if the AI generates too many lines of code all at once. That’s why we need to create partially autonomous systems, where the AI does most of the work and humans can quickly review the results.
+
+- I'd like to try creating an app for a task I do frequently throughout my day using Vibe Coding and see how much time I save in terms of actual coding hours.
+
+## ReAct
+
+- I would like to explore how, by employing a cycle of reasoning, action, and observation (the core elements of ReAct), it is possible to improve a model’s performance in a continuous and dynamic environment, where the agent must constantly update its working memory to handle unexpected events and sporadic rewards
+
+## Trap-exercise discussion questions
+
 **1. What other "looks right but isn't" failures might hide in agent-generated bioinformatics code? (Strand handling, GRCh37/38 confusion, BED vs GFF, 0-based vs 1-based VCF positions, samtools mpileup off-by-one, BAM flag bitfield misreads, phred encoding…)**
 While doing some research, I discovered that there are other mistakes the agent can make without causing the program to crash. For example, it might forget to perform reverse-complementation when the sequence is on the negative strand. Another common issue is confusion between genome versions (such as using GRCh37 coordinates on GRCh38) or mixing formats that start counting from 0 (like BED) with those that start from 1 (like GFF or VCF).
 
