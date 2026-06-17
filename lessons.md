@@ -145,9 +145,15 @@ To manage large-scale validation, I would automate the process by integrating pr
 
 <!-- Jumper lecture / AlphaFold3 paper notes -->
 
+### What kind of model output do I encounter most often in my own work, and what would I need to check before calling it biologically meaningful?
+
+-One of the outputs I encounter most frequently in my work is segmentation logits, but often, before determining whether they have any real biological significance, I must verify their strict spatial anatomical consistency.
+
 #### Surprises
 
 <!-- FM exercises, agent handling of models, validation hooks -->
+
+> **2026-06-13 · AlphaFold2 (Colab) ** — **Ran** *structure prediction on CYC_HUMAN with multiple seeds to test output stability*. **Observed:** the core domain (residues ~6-100) remained structurally locked, while terminal tails (~1-5, ~102-105) adopted vastly different conformations in every run. **Takeaway:** defined the core as a structural invariant; verified that terminal variability is not a model artifact but a clear indicator of intrinsic disorder in the sequence.
 
 ### Week 4
 
