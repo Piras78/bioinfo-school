@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "protein-embeddings-esm2"
+version = "0.1.0"
+description = "Extract and analyze protein embeddings using ESM-2"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Bioinformatics School Student" }
+]
+dependencies = [
+    "torch",
+    "transformers",
+    "einops",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "umap-learn",
+    "biopython",
+    "scipy",
+    "ipykernel",
+]

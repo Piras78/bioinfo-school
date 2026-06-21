@@ -1,0 +1,4 @@
+# Reflection: what I would and would not trust an agent with
+
+- **I would trust** an agent to generate boilerplate PyTorch data loaders, set up basic MONAI transform pipelines, or write visualization scripts for evaluating Dice scores. 
+- **I would not trust** an agent to make autonomous architectural decisions regarding segmentation decoders or to modify the underlying loss functions for Multiple Sclerosis lesion segmentation. In medical imaging, a silent coordinate bug or an unverified tensor shape mismatch can invalidate the entire experiment, so the core logic must remain strictly human-verified.

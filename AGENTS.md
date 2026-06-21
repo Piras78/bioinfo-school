@@ -1,0 +1,7 @@
+
+1. **Environment & Libraries:** Use Python 3.10+. The core stack is `torch`, `monai`, `numpy`, and `pandas`. Assume GPU availability for PyTorch operations.
+2. **Data Location:** Medical imaging data (e.g., MRI scans, `.nii.gz` files) live strictly in the `/data/` directory. Never generate scripts that copy or move large imaging data into the source code folders.
+3. **Tensor Conventions:** Always explicitly comment and verify tensor shapes. For MONAI/PyTorch medical imaging workflows, expect and enforce `(Batch, Channel, Depth, Height, Width)` for 3D volumes and `(B, C, H, W)` for 2D slices.
+4. **Validation Checks:** Before claiming a training or validation script is successful, you must verify two things: 1) The output tensor of the decoder matches the spatial resolution of the ground truth mask, and 2) The code includes a valid Dice score computation.
+5. **Project Scope:** The focus of this project is the **evaluation of segmentation decoders**. Do not suggest edits or modifications to the core encoder architecture or the frozen foundation model files.
+6. **Git Restrictions:** NEVER write scripts that stage or commit model weights (`*.pth`, `*.safetensors`, `*.ckpt`), training logs (`runs/`, `wandb/`), or any patient-related data.

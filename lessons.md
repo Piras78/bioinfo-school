@@ -161,6 +161,27 @@ To manage large-scale validation, I would automate the process by integrating pr
 
 <!-- MCP / BixBench notes -->
 
+### Exercise C
+
+**Task:** Extract volume dimensions and voxel size from a medical MRI scan (`.nii.gz`).
+
+**Code mode** (The agent writes a Python script using MONAI/nibabel)
+* *Artifact:* A `.py` script or Jupyter notebook saved in the repo.
+* *What can silently go wrong?* The agent might hardcode file paths or swap spatial axes without throwing an error, leading to silent bugs in downstream tensors.
+* *When to use:* Reusable analysis. Perfect if I need to process a dataset of 100 new patients.
+
+**Command mode** (The agent runs terminal commands like `fslinfo` or `python -c`)
+* *Artifact:* No file. Just text output printed directly in the IDE chat window.
+* *What can silently go wrong?* The required CLI tool might not be installed, or the environment might not be active. The output is lost as soon as the chat is cleared.
+* *When to use:* One-off exploration. Useful for a quick sanity check on a 3D volume before writing a neural network architecture.
+
+**MCP / Tool mode** (The agent calls a pre-defined tool, e.g., `get_mri_metadata()`)
+* *Artifact:* A structured JSON object injected safely into the agent's context.
+* *What can silently go wrong?* The wrapper might swallow important warnings from the underlying library and return default/fallback values invisibly.
+* *When to use:* Production workflow. Ideal for an autonomous loop where the agent needs to check data validity before launching a long training run.
+
 #### Surprises
 
 <!-- BioTerm-Bench, MCP demo, failure modes -->
+
+> **2026-06-19 · Antigravity agent **  — **Asked** *the agent to write a validation loop for an MRI segmentation decoder after adding an AGENTS.md file with MONAI 3D tensor rules.* **Observed:** the agent automatically read the root configuration without explicit attachment, strictly enforced the (B, C, D, H, W) shape check, and systematically avoided staging any .pth model weights. **Takeaway:** repo-specific rule files effectively constrain agent behavior and act as a reliable safeguard against silent dimension mismatches in medical imaging workflows.
